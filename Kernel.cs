@@ -117,7 +117,13 @@ namespace Cosmoscaca
             
             graf.starts();
             graf.cls(Color.White);
-            graf.box(1, 1, 100, 100);
+            for (int i = 0; i < 1024; i = i + 8) 
+            {
+                graf.hlines( 0, i, 1024);
+                graf.vline( i, 0, 800);
+
+            }
+            
             graf.displays();
         }
 
