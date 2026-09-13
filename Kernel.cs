@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Cosmos.System.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
+using Cosmos.System.Graphics;
 using Sys = Cosmos.System;
 
 namespace Cosmoscaca
@@ -28,12 +31,16 @@ namespace Cosmoscaca
     }
     class graf
     {
+        public static Canvas canvas;
+        public static Bitmap bitmap;
+
         public static void Points(int x, int y)
         {
-            Console.CursorLeft = x; Console.CursorTop = y;
 
-            Console.WriteLine(" ");
 
+            Pen p = new Pen(Color.FromArgb(0, 0, 0));
+            canvas.DrawPoint(p,x,y);
+            
 
 
 
@@ -64,6 +71,31 @@ namespace Cosmoscaca
 
 
         }
+        public static void starts() 
+        {
+
+
+            canvas = FullScreenCanvas.GetFullScreenCanvas();  
+
+            
+            
+            
+
+        }
+        public static void displays() 
+        {
+
+            canvas.Display();
+
+
+        }
+        public static void cls(Color c) 
+        {
+
+
+            canvas.Clear(c);
+
+        }
 
     }
 
@@ -81,10 +113,12 @@ namespace Cosmoscaca
 
         public static void mainLoop()
         {
-            graf.box(1, 1, 10, 10);
-
-
-
+            //
+            
+            graf.starts();
+            graf.cls(Color.White);
+            graf.box(1, 1, 100, 100);
+            graf.displays();
         }
 
 
@@ -98,13 +132,8 @@ namespace Cosmoscaca
 
         public static void Main()
         {
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.Black;
-
             tests.mainLoop();
-            Console.BackgroundColor = ConsoleColor.White;
+
 
 
         }
